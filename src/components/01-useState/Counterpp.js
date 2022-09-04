@@ -4,10 +4,14 @@ import './counter.css'
 export const Counterpp = () => {
 
     //Desestructuracion
-    const [{counter1, counter2}, setCounter] = useState({
+    const [state, setState] = useState({
         counter1: 10,
-        counter2: 20
+        counter2: 20,
+        counter3: 30,
+        counter4: 40
     })
+
+    const {counter1, counter2} = state;
 
     return (
         <>
@@ -16,7 +20,10 @@ export const Counterpp = () => {
             <hr/>
 
             <button className='btn btn-primary' onClick={()=>{
-                setCounter({counter1: counter1 + 1, counter2: counter2})
+                setState({
+                    ...state,
+                    counter1: counter1 + 1
+                })
             }}>+1</button>
         </>
     )
