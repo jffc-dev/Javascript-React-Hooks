@@ -12,8 +12,8 @@ export const CounteWithCustomHook = () => {
             <h1>Counter with hook {state}</h1>
             <hr/>
 
-            <button className='btn' onClick={increment}>+1</button>
-            <button className='btn' onClick={decrement}>-1</button>
+            <button className='btn' onClick={()=>{increment()}}>+1</button>
+            <button className='btn' onClick={()=>{decrement()}}>-1</button>
         </>
     )
 }
