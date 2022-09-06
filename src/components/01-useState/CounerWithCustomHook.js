@@ -5,7 +5,7 @@ import './counter.css'
 
 export const CounteWithCustomHook = () => {
 
-    const {state, increment, decrement } = useCounter(541);
+    const {state, increment, decrement, reset } = useCounter(541);
 
     return (
         <>
@@ -13,6 +13,7 @@ export const CounteWithCustomHook = () => {
             <hr/>
 
             <button className='btn' onClick={()=>{increment()}}>+1</button>
+            <button className='btn' onClick={reset}>Reset</button>
             <button className='btn' onClick={()=>{decrement()}}>-1</button>
         </>
     )
