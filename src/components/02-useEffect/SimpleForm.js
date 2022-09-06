@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import './effects.css'
+import { Message } from './Message';
 
 export const SimpleForm = () => {
+
+    //React Hook "useState" is called conditionally. React Hooks must be called in the exact same order in every component render
+    // if(true){
+    //     const [test, setTest] = useState(0);
+    // }
 
     const [formState, setFormState] = useState({
         name: '',
@@ -17,15 +23,15 @@ export const SimpleForm = () => {
 
     //throwed every time a state changes
     useEffect( ()=> {
-        console.log("initial");
+        // console.log("initial");
     }, []);
 
     useEffect( ()=> {
-        console.log("formState changed");
+        // console.log("formState changed");
     }, [formState]);
 
     useEffect( ()=> {
-        console.log("name changed");
+        // console.log("name changed");
     }, [name]);
 
     const handleInputChange = ({target}) => {
@@ -49,6 +55,8 @@ export const SimpleForm = () => {
                 <input type="text" name="email" className="form-control" placeholder="Your email"
                         autoComplete='off' value={email} onChange={handleInputChange}/>
             </div>
+
+            { (name === "123") && <Message/>}
         </>
     )
 }
