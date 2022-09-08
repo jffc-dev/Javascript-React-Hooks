@@ -1,0 +1,31 @@
+{
+	"info": {
+		"_postman_id": "54ded1fe-b98f-4b11-9d3d-bda326410133",
+		"name": "CursoReact",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19678728"
+	},
+	"item": [
+		{
+			"name": "Get Breaking Bad quote by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://breakingbadapi.com/api/quotes/1",
+					"protocol": "https",
+					"host": [
+						"breakingbadapi",
+						"com"
+					],
+					"path": [
+						"api",
+						"quotes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
