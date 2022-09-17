@@ -10,13 +10,31 @@ export const TodoApp = () => {
         done: false
     }];
 
-    const [todos] = useReducer(todoReducer, initialState);
+    const [todos, dispatch] = useReducer(todoReducer, initialState);
+
+    const handleSubmit = (e) => {
+        
+        e.preventDefault();
+
+        const newTodo = {
+            id: new Date().getTime(),
+            desc: 'New todo',
+            done: false
+        }
+
+        const addTodo = {
+            type: 'add',
+            payload: newTodo
+        }
+
+        dispatch(addTodo);
+    }
 
     console.log(todos);
 
     return (
         <div>
-            <h1>TodoApp ({todos.length})</h1>
+            <h1>TodoApp ( {todos.length} )</h1>
             <hr/>
 
             <div className='row'>
@@ -41,7 +59,7 @@ export const TodoApp = () => {
                     <h4>Add TODO</h4>
                     <hr/>
 
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <input type='text'
                         name='description'
                         placeholder='what are you going to do?'
