@@ -43,6 +43,16 @@ export const TodoApp = () => {
         reset();
     }
 
+    const handleDelete = (todoId) => {
+
+        const deleteTodo = {
+            type: 'delete',
+            payload: todoId
+        }
+
+        dispatch(deleteTodo);
+    }
+
     return (
         <div>
             <h1>TodoApp ( {todos.length} )</h1>
@@ -58,7 +68,7 @@ export const TodoApp = () => {
                                 key={todo.id}
                                 className='list-group-item'>
                                     <p className='text-center'>{index+1}. {todo.desc}</p>
-                                    <button className='btn btn-danger'>Borrar</button>
+                                    <button className='btn btn-danger' onClick={()=>{handleDelete(todo.id)}}>Delete</button>
                                 </li>
                             })
                         }
