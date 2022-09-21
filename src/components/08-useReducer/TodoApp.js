@@ -1,6 +1,6 @@
-import React, { useEffect, useReducer } from 'react'
-import { useForm } from '../../hooks/useForm';
+import React, { useEffect, useReducer } from 'react';
 import './styles.css'
+import { TodoAdd } from './TodoAdd';
 import { TodoList } from './TodoList';
 import { todoReducer } from './todoReducer';
 
@@ -13,27 +13,12 @@ export const TodoApp = () => {
     }
 
     const [todos, dispatch] = useReducer(todoReducer, [], init);
-    const [{description}, handleInputChange, reset] = useForm({
-        description: ''
-    });
 
     useEffect(()=>{
         localStorage.setItem('todos', JSON.stringify(todos))
     },[todos])
 
-    const handleSubmit = (e) => {
-        
-        e.preventDefault();
-
-        if(description.trim().length <= 1){
-            return;
-        }
-
-        const newTodo = {
-            id: new Date().getTime(),
-            desc: description,
-            done: false
-        }
+    const handleAdd = ( newTodo ) => {
 
         const addTodo = {
             type: 'add',
@@ -41,7 +26,7 @@ export const TodoApp = () => {
         }
 
         dispatch(addTodo);
-        reset();
+
     }
 
     const handleDelete = (todoId) => {
@@ -78,20 +63,8 @@ export const TodoApp = () => {
                 
                 <div className='col-5'>
 
-                    <h4>Add TODO</h4>
-                    <hr/>
+                    <TodoAdd handleAdd={handleAdd}/>
 
-                    <form onSubmit={handleSubmit}>
-                        <input type='text'
-                        name='description'
-                        placeholder='what are you going to do?'
-                        autoComplete='off'
-                        className='form-control'
-                        onChange={handleInputChange}
-                        value={description}></input>
-
-                        <button className='btn btn-outline-primary mt-1 w-100'>Add</button>
-                    </form>
                 </div>
 
             </div>
